@@ -2,12 +2,12 @@ import java.util.ArrayList;
 
 public class Arc {
 	Node Point;
-	ArrayList<String> weight;
+	char weight;
 	
-	public Arc(Node point, ArrayList<String> weights)
+	public Arc(Node point, char weight)
 	{
 		this.Point = point;
-		this.weight=weights;
+		this.weight=weight;
 	}
 
 }
