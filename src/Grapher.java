@@ -142,6 +142,194 @@ public class Grapher extends JPanel{
 		}
 	public static void main(String args[])
 	{
+		
+		String op=JOptionPane.showInputDialog("1)Problema 1\n"
+				+ "2)Problema 2\n"
+				+ "3)Problema 3\n"
+		);
+		switch(op)
+		{
+		case "1":problema1();break;
+		case "2":problema2();break;
+		case "3":problema3();break;
+		}
+	}
+	public static void problema1()
+	{
+		String input="";
+		Node q0 = new Node();
+		q0.name = "q0";
+		Node q1 = new Node();
+		q1.name = "q1";
+		Node q2 = new Node();
+		q2.name = "q2";
+		Node q3 = new Node();
+		q3.name = "q3";
+		Node qe = new Node();
+		qe.name = "qerror";
+		
+		q0.finalNode = true;
+		q0.startingNode = true;
+		Arc a = new Arc(q0,'a');
+		Arc b = new Arc(q1,'b');
+		Arc c = new Arc(q1,'a');
+		Arc d = new Arc(q2,'b');
+		Arc e = new Arc(q2,'a');
+		Arc g= new Arc(q3,'b');
+		Arc h= new Arc(q3,'a');
+		Arc i= new Arc(qe,'b');
+		q0.addOutBoundArc(a);
+		q0.addOutBoundArc(b);
+		q1.addOutBoundArc(c);
+		q1.addOutBoundArc(d);
+		q2.addOutBoundArc(e);
+		q2.addOutBoundArc(g);
+		q3.addOutBoundArc(h);
+		q3.addOutBoundArc(i);
+		ArrayList<Node> graph = new ArrayList<Node>();
+		graph.add(q0);
+		graph.add(q1);
+		graph.add(q2);
+		graph.add(q3);
+		graph.add(qe);
+		Automata nier = new Automata();
+		nier.graph=graph;
+		nier.init();
+		Grapher gf = new Grapher(nier);
+		JFrame f = new JFrame();
+		while(true) 
+		{
+			 gf = new Grapher(nier);
+			 f = new JFrame();
+			ScrollPane scroll = new ScrollPane();
+	    	scroll.add(gf);
+			f.add(scroll);
+			f.setVisible(true);
+			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			input=JOptionPane.showInputDialog("");
+			if(input.equals("_"))
+			{
+				break;
+			}
+			if(!nier.read(input.charAt(0)))
+			{
+				JOptionPane.showMessageDialog(null,"Cadena no valida");
+				f.dispose();
+				//break;
+				return;
+			}
+			f.dispose();
+		}
+		 gf = new Grapher(nier);
+		 f = new JFrame();
+		ScrollPane scroll = new ScrollPane();
+    	scroll.add(gf);
+		f.add(scroll);
+		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		if(nier.validateString())
+		{
+			JOptionPane.showMessageDialog(null,"Cadena Valida");
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"Cadena no valida");
+		}
+	}
+	
+	public static void problema2()
+	{
+		String input="";
+		Node q0 = new Node();
+		q0.name = "q0";
+		Node q1 = new Node();
+		q1.name = "q1";
+		Node q2 = new Node();
+		q2.name = "q2";
+		Node q3 = new Node();
+		q3.name = "q3";
+		Node q4 = new Node();
+		q4.name = "q4";
+		Node q5 = new Node();
+		q5.name = "q5";
+		
+		q5.finalNode = true;
+		q3.finalNode = true;
+		q0.startingNode = true;
+		Arc a = new Arc(q1,'a');
+		Arc b = new Arc(q4,'b');
+		Arc c = new Arc(q2,'b');
+		Arc d = new Arc(q2,'a');
+		Arc e = new Arc(q3,'b');
+		Arc g= new Arc(q3,'a');
+		Arc h= new Arc(q4,'a');
+		Arc i= new Arc(q5,'b');
+		Arc j= new Arc(q5,'a');
+		q0.addOutBoundArc(a);
+		q0.addOutBoundArc(b);
+		q1.addOutBoundArc(c);
+		q2.addOutBoundArc(d);
+		q2.addOutBoundArc(e);
+		q3.addOutBoundArc(g);
+		q4.addOutBoundArc(h);
+		q4.addOutBoundArc(i);
+		q5.addOutBoundArc(j);
+		ArrayList<Node> graph = new ArrayList<Node>();
+		graph.add(q5);
+		graph.add(q4);
+		graph.add(q0);
+		graph.add(q1);
+		graph.add(q2);
+		graph.add(q3);
+		
+		
+		Automata nier = new Automata();
+		nier.graph=graph;
+		nier.init();
+		Grapher gf = new Grapher(nier);
+		JFrame f = new JFrame();
+		while(true) 
+		{
+			 gf = new Grapher(nier);
+			 f = new JFrame();
+			ScrollPane scroll = new ScrollPane();
+	    	scroll.add(gf);
+			f.add(scroll);
+			f.setVisible(true);
+			f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			input=JOptionPane.showInputDialog("");
+			if(input.equals("_"))
+			{
+				break;
+			}
+			if(!nier.read(input.charAt(0)))
+			{
+				JOptionPane.showMessageDialog(null,"Cadena no valida");
+				f.dispose();
+				//break;
+				return;
+			}
+			f.dispose();
+		}
+		 gf = new Grapher(nier);
+		 f = new JFrame();
+		ScrollPane scroll = new ScrollPane();
+    	scroll.add(gf);
+		f.add(scroll);
+		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		if(nier.validateString())
+		{
+			JOptionPane.showMessageDialog(null,"Cadena Valida");
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"Cadena no valida");
+		}
+	}
+	
+	public static void problema3()
+	{
 		String input="";
 		Node s1 = new Node();
 		s1.name = "s1";
@@ -201,7 +389,6 @@ public class Grapher extends JPanel{
 		{
 			JOptionPane.showMessageDialog(null,"Cadena no valida");
 		}
-		
 	}
 	
 	
