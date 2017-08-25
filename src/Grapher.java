@@ -90,16 +90,16 @@ public class Grapher extends JPanel{
 		f.add(scroll);
 		f.setVisible(true);
 	}
-public static int u(double x,double val)
-{
-	if(val>x)
+	public static int u(double x,double val)
 	{
-		return 1;
+		if(val>x)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
-	else
-	{
-		return 0;
-	}
-}
 
 }
