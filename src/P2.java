@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class P2 {
 
@@ -67,6 +69,6 @@ public class P2 {
 			}
 			
 		} 
-	
+}
 
 

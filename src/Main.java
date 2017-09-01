@@ -1,10 +1,18 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import javax.swing.JOptionPane;
+
 public class Main {
 	
 	public static void main(String[] args) {
 		BufferedReader o = new BufferedReader( new InputStreamReader(System.in));
+		
+		
+		MenuPrincipal();
+		
+		
+		
 		String input = "";
 		String state = "S1";
 		char[] allowedChars = {'0','1'};
@@ -67,4 +75,53 @@ public class Main {
 		}
 		
 	} 
-}
+	
+	
+	static void MenuPrincipal()
+	{
+		//numero de nodos, nodo n conexiones, 
+		int cnodos= 0;
+		int conexionesNodos=0; 
+		String cxNodos;
+		
+		boolean sunnyday=true;
+		
+		do{		
+			sunnyday=true;
+			cnodos=0;
+			try{
+				cnodos=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la cantidad de nodos"));
+				}
+			catch(Exception e)
+			{
+				JOptionPane.showMessageDialog(null, "Introduzca un numero.");
+				sunnyday=false;
+				
+			}
+		}while(sunnyday==false);
+		
+		do{
+			sunnyday=true;
+		for(int a=0;a<cnodos;a++){
+			try{
+				conexionesNodos=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese la cantidad de conexiones del nodo "+(a+1)));
+				}
+			catch(Exception e)
+			{
+				JOptionPane.showMessageDialog(null, "Introduzca un numero.");
+				sunnyday=false;
+			}
+		}
+		}while(sunnyday==false);
+		
+		for(int b=0;b<conexionesNodos;b++){
+			
+			
+				
+				cxNodos=(JOptionPane.showInputDialog("Conexiones del nodo "+(b+1),"¿Con que nodo se conecta el nodo "+(b+1)+"?"));
+				
+			}
+		}
+	}
+	
+
