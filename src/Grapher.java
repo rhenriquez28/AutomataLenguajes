@@ -24,6 +24,7 @@ public class Grapher extends JPanel{
 		private static final Color NON_CURRENT_STATE_COLOR =new Color(22,160,133);
 		private static final Font DEFAULT_FONT = new Font("TimesRoman", Font.PLAIN,20);
 		private static final Color RECTANGLE_COLOR =new Color(0,0,133);
+		private static final Color FINAL_CIRCLE_COLOR =new Color(0,0,0);
 		public String currentState;
 		public Automata nier;
 		public HashMap<Node,Point> circles = new HashMap<Node,Point>();
@@ -81,7 +82,18 @@ public class Grapher extends JPanel{
 			g2.setColor(RECTANGLE_COLOR);
 		    Arc key = entry.getKey();
 		    ArrayList<Point> value = entry.getValue();
-		    g2.drawLine(value.get(0).x, value.get(0).y, value.get(1).x, value.get(1).y);
+		    if(value.get(0).x<value.get(1).x)
+		    {
+		    	 g2.drawLine(value.get(0).x, value.get(0).y+5, value.get(1).x, value.get(1).y+5);
+		    	 g2.drawString(">",(value.get(1).x+value.get(0).x)/2, value.get(1).y+10);
+		    	 g2.drawString(key.weight+"" , (value.get(1).x+value.get(0).x)/2, value.get(1).y+20);
+		    }
+		    else
+		    {
+		    	 g2.drawLine(value.get(0).x, value.get(0).y-5, value.get(1).x, value.get(1).y-5);
+		    	 g2.drawString("<",(value.get(1).x+value.get(0).x)/2, value.get(1).y-2);
+		    	 g2.drawString(key.weight+"" , (value.get(1).x+value.get(0).x)/2, value.get(1).y-15);
+		    }
 		   
 		}
 		for(Map.Entry<Arc, Point> entry : arcs.entrySet()) {
@@ -89,6 +101,7 @@ public class Grapher extends JPanel{
 		    Arc key = entry.getKey();
 		    Point value = entry.getValue();
 		    g2.drawArc(value.x, value.y, CIRCLE_RADIUS, 70, 300,260);
+		    g2.drawString(key.weight+"", value.x, (int)(value.y-CIRCLE_RADIUS*0.2));
 		    System.out.print(value.x+"x");
 		    System.out.print(value.y+"y");
 		    
@@ -108,7 +121,12 @@ public class Grapher extends JPanel{
 		    g2.setColor(RECTANGLE_COLOR);
 		    g2.setFont(DEFAULT_FONT);
 		    if(key.finalNode && key.startingNode)
-		    	g2.drawString("/"+key.name, value.x, value.y);
+		    {
+		    	g2.drawString("+"+key.name, value.x, value.y);
+		    	g2.setColor(FINAL_CIRCLE_COLOR);
+		    	drawCenteredCircleBorder(g2,value.x,value.y,CIRCLE_RADIUS-10);
+		    }
+		    	
 		    else
 		    {
 		    	if(key.startingNode)
@@ -116,7 +134,12 @@ public class Grapher extends JPanel{
 		    	else
 		    	{
 		    		if(key.finalNode)
-				    	g2.drawString("*"+key.name, value.x, value.y);
+		    		{
+		    			g2.setColor(FINAL_CIRCLE_COLOR);
+				    	drawCenteredCircleBorder(g2,value.x,value.y,CIRCLE_RADIUS-10);
+				    	g2.drawString(key.name, value.x, value.y);
+		    		}
+				    	
 		    		else
 		    			g2.drawString(key.name, value.x, value.y);
 		    	}
@@ -138,6 +161,13 @@ public class Grapher extends JPanel{
 		  x = x-(r/2);
 		  y = y-(r/2);
 		  g.fillOval(x, y, r, r);
+		  
+		}
+	public void drawCenteredCircleBorder(Graphics2D g, int x, int y, int r) {
+		
+		  x = x-(r/2);
+		  y = y-(r/2);
+		  g.drawOval(x, y, r, r);
 		  
 		}
 	public static void main(String args[])
@@ -390,7 +420,10 @@ public class Grapher extends JPanel{
 			JOptionPane.showMessageDialog(null,"Cadena no valida");
 		}
 	}
+
 	
+		
+		
 	
 
 }
