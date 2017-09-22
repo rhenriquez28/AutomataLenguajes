@@ -1,0 +1,25 @@
+Analizador Sintáctico
+Un analizador sintáctico (o parser) es un programa informático que analiza una cadena de símbolos de acuerdo a las reglas de una gramática formal. El término proviene del Latín pars, que significa parte (del discurso). Usualmente hace parte de un compilador, en cuyo caso, transforma una entrada en un árbol de sintáctico de derivación.1​2​
+
+El análisis sintáctico convierte el texto de entrada en otras estructuras (comúnmente árboles), que son más útiles para el posterior análisis y capturan la jerarquía implícita de la entrada. Un analizador léxico crea tokens de una secuencia de caracteres de entrada y son estos tokens los que son procesados por el analizador sintáctico para construir la estructura de datos, por ejemplo un árbol de análisis o árboles de sintaxis abstracta.
+
+El análisis sintáctico también es un estado inicial del análisis de frases de lenguaje natural. Es usado para generar diagramas de lenguajes que usan flexión gramatical, como los idiomas romances o el latín. Los lenguajes habitualmente reconocidos por los analizadores sintácticos son los lenguajes libres de contexto. Cabe notar que existe una justificación formal que establece que los lenguajes libres de contexto son aquellos reconocibles por un autómata de pila, de modo que todo analizador sintáctico que reconoce un lenguaje libre de contexto es equivalente en capacidad computacional a un autómata de pila.
+
+Los analizadores sintácticos fueron extensivamente estudiados durante los años 1970, detectando numerosos patrones de funcionamiento en ellos, cosa que permitió la creación de programas generadores de analizadores sintácticos a partir de una especificación de la sintaxis del lenguaje en forma Backus-Naur por ejemplo, tales como yacc, GNU bison y javaCC.
+
+
+Lenguajes de Programación 
+El uso más común de los analizadores sintácticos es como parte de la fase de análisis de los compiladores. De modo que tienen que analizar el código fuente del lenguaje. Los lenguajes de programación tienden a basarse en gramáticas libres de contexto, debido a que se pueden escribir analizadores rápidos y eficientes para estas.
+
+Las gramáticas libres de contexto tienen una expresividad limitada y sólo pueden expresar un conjunto limitado de lenguajes. Informalmente la razón de esto es que la memoria de un lenguaje de este tipo es limitada, la gramática no puede recordar la presencia de una construcción en una entrada arbitrariamente larga y esto es necesario en un lenguaje en el que por ejemplo una variable debe ser declarada antes de que pueda ser referenciada. Las gramáticas más complejas no pueden ser analizadas de forma eficiente. Por estas razones es común crear un analizador permisivo para una gramática libre de contexto que acepta un superconjunto del lenguaje (acepta algunas construcciones inválidas), después del análisis inicial las construcciones incorrectas pueden ser filtradas.
+
+Normalmente es fácil definir una gramática libre de contexto que acepte todas las construcciones de un lenguaje pero por el contrario es prácticamente imposible construir una gramática libre de contexto que admita solo las construcciones deseadas. En cualquier caso la mayoría de analizadores no son construidos a mano sino usando generadores automáticos.
+
+
+
+Idioma
+Los sistemas más exitosos usan estadísticas léxicas, es decir obtienen la categoría gramatical de las palabras, estos sistemas son vulnerables debido a que terminan por tener una cantidad excesiva de parámetros y finalmente requieren simplificaciones.
+Los algoritmos de análisis de idioma natural no se pueden basar en gramáticas que tengan unas buenas características como se hace con las gramáticas diseñadas, por ejemplo para los lenguajes de programación. Algunos formalismos gramaticales son muy difíciles de analizar computacionalmente, por lo que, en general se usa una aproximación libre de contexto incluso si la estructura en sí no es libre de contexto para obtener una primera simplificación.
+Los algoritmos que usan gramáticas libres de contexto se suelen basar en alguna variante del algoritmo Cocke-Younger-Kasami (CYK) y heurística para la poda de análisis infructuosos. En todo caso algunos enfoques sacrifican la velocidad por la precisión usando, por ejemplo, versiones lineales del algoritmo «shift-reduce». Enfoques recientemente desarrollados utilizan un algoritmo que genera de múltiples análisis y otro que escoge la mejor opción.
+
+
